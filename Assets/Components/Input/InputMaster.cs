@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/scripts/Input/InputMaster.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/GameObjects/Input/InputMaster.inputactions'
 
 using System;
 using System.Collections;
@@ -54,6 +54,22 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""name"": ""ToggleLight"",
                     ""type"": ""Button"",
                     ""id"": ""fc2ebf90-2e13-463b-934f-2c6417375df8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Fire1"",
+                    ""type"": ""Button"",
+                    ""id"": ""29959a08-7c55-4961-bea0-31e07f3ce013"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""a51829a2-93a9-4572-80ec-456c1e4900d7"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
@@ -147,6 +163,28 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""action"": ""ToggleLight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3fa1f9a2-b6fb-4474-b630-639fccb11de7"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard/Mouse"",
+                    ""action"": ""Fire1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8d9c5ba6-1869-4295-8ea7-8deb8fecd4b7"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard/Mouse"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -177,6 +215,8 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_MoveY = m_Player.FindAction("MoveY", throwIfNotFound: true);
         m_Player_MoveX = m_Player.FindAction("MoveX", throwIfNotFound: true);
         m_Player_ToggleLight = m_Player.FindAction("ToggleLight", throwIfNotFound: true);
+        m_Player_Fire1 = m_Player.FindAction("Fire1", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -231,6 +271,8 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_MoveY;
     private readonly InputAction m_Player_MoveX;
     private readonly InputAction m_Player_ToggleLight;
+    private readonly InputAction m_Player_Fire1;
+    private readonly InputAction m_Player_Interact;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -240,6 +282,8 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @MoveY => m_Wrapper.m_Player_MoveY;
         public InputAction @MoveX => m_Wrapper.m_Player_MoveX;
         public InputAction @ToggleLight => m_Wrapper.m_Player_ToggleLight;
+        public InputAction @Fire1 => m_Wrapper.m_Player_Fire1;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -264,6 +308,12 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @ToggleLight.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleLight;
                 @ToggleLight.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleLight;
                 @ToggleLight.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleLight;
+                @Fire1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire1;
+                @Fire1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire1;
+                @Fire1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire1;
+                @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -283,6 +333,12 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @ToggleLight.started += instance.OnToggleLight;
                 @ToggleLight.performed += instance.OnToggleLight;
                 @ToggleLight.canceled += instance.OnToggleLight;
+                @Fire1.started += instance.OnFire1;
+                @Fire1.performed += instance.OnFire1;
+                @Fire1.canceled += instance.OnFire1;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -303,5 +359,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnMoveY(InputAction.CallbackContext context);
         void OnMoveX(InputAction.CallbackContext context);
         void OnToggleLight(InputAction.CallbackContext context);
+        void OnFire1(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }

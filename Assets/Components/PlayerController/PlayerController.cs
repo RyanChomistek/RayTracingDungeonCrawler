@@ -1,11 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public Transform m_Camera;
+    #region Movement Variables
+    public Transform m_Camera = null;
 
     public float m_MoveSpeed = 5;
     public float m_MaxMoveSpeed = 1;
@@ -16,8 +18,16 @@ public class PlayerController : MonoBehaviour
     // rotations
     public float m_RotateSensitivity = .25f;
     public float m_MaxYAngle = 80f;
+    #endregion
 
-    public GameObject m_FlashLight;
+    [SerializeField]
+    private GameObject m_FlashLight = null;
+
+    [SerializeField]
+    private CrossBowController m_CrossBowController = null;
+
+    [SerializeField]
+    private QuiverController m_QuiverController = null;
 
     private void Awake()
     {
@@ -53,6 +63,31 @@ public class PlayerController : MonoBehaviour
     {
         m_FlashLight.SetActive(!m_FlashLight.activeSelf);
     }
+
+    private void OnFire1(InputValue value)
+    {
+        m_CrossBowController.Fire();
+    }
+
+    private void OnInteract(InputValue value)
+    {
+        CastForInteractables(interactable => 
+        {
+            Debug.Log($"{interactable.GetGameObject().name}");
+
+            CrossBowBoltController bolt;
+            if (bolt = interactable as CrossBowBoltController)
+            {
+                m_QuiverController.AddBolt(bolt);
+
+                if(!m_CrossBowController.HasLoadedBolt())
+                    m_CrossBowController.ReadyNextBolt();
+            }
+
+            interactable.OnInteract();
+        });
+        
+    }
     #endregion input handlers
 
     private void UpdateRotation(Transform t, Vector3 delta)
@@ -75,8 +110,7 @@ public class PlayerController : MonoBehaviour
     private void UpdateVelocity()
     {
         Vector3 cameraMove = new Vector3(m_MoveDirection.x, 0, m_MoveDirection.y).normalized * m_MoveSpeed * Time.deltaTime;
-        var compositeDelta = (m_Camera.right * cameraMove.x) + (m_Camera.forward * cameraMove.z);
-        //Vector3 newVelocity = GetComponent<Rigidbody>().velocity + compositeDelta;
+        var compositeDelta = (transform.right * cameraMove.x) + (transform.forward * cameraMove.z);
 
         if(GetComponent<Rigidbody>().velocity.magnitude > m_MaxMoveSpeed)
         {
@@ -89,9 +123,36 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        UpdateVelocity();
-        //Debug.Log($"Aim {Mouse.current.delta.ReadValue()}");
+        // Update body rotation
         UpdateRotation(transform, new Vector3(Mouse.current.delta.ReadValue().x,0,0));
+
+        // Update head rotation
         UpdateRotation(m_Camera, new Vector3(0, Mouse.current.delta.ReadValue().y, 0));
+    }
+
+    private void FixedUpdate()
+    {
+        UpdateVelocity();
+        CheckForInteractableHover();
+    }
+
+    private void CheckForInteractableHover()
+    {
+        CastForInteractables(x => x.OnHover());
+    }
+
+    private void CastForInteractables(Action<Interactable> OnHitCallback)
+    {
+        int layerMask = 1 << LayerMask.NameToLayer("Interactable");
+        int maxDistance = 10;
+
+        if (Physics.BoxCast(m_Camera.position, Vector3.one, m_Camera.forward, out RaycastHit hit, transform.rotation, maxDistance, layerMask))
+        {
+            Interactable interactable = hit.collider.gameObject.GetComponent<Interactable>();
+            if (interactable != null)
+            {
+                OnHitCallback(interactable);
+            }
+        }
     }
 }

@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8582570553386027583
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2155321490889794498, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_Name
+      value: StickyGlowStick
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155321490889794503, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3b0540ca4e0fcf144bdd8c6b0c348908, type: 2}
+    - target: {fileID: 2155321492503058542, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155321492503058542, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.226
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155321492503058546, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_IsSticky
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966160841423012904, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_IsSticky
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966160841423012911, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966160841423012916, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.249
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966160841423012916, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.047
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966160841423012916, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966160841423012916, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966160841423012916, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966160841423012916, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966160841423012916, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966160841423012916, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966160841423012916, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966160841423012916, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966160841423012916, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966160841423012917, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_Name
+      value: StickyGlowStick
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ae8d2c9898d110045bc640cf41bdadad, type: 3}
