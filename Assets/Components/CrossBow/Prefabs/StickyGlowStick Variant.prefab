@@ -7,10 +7,40 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 983740090490800492, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 983740090490800492, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.5066592
+      objectReference: {fileID: 0}
+    - target: {fileID: 983740090490800492, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 983740090490800492, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 1.193662
+      objectReference: {fileID: 0}
+    - target: {fileID: 983740090490800492, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_ColorTemperature
+      value: 15600
+      objectReference: {fileID: 0}
+    - target: {fileID: 983740090490800492, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2155321490889794498, guid: ae8d2c9898d110045bc640cf41bdadad,
         type: 3}
       propertyPath: m_Name
-      value: StickyGlowStick
+      value: StickyGlowStick Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2155321490889794503, guid: ae8d2c9898d110045bc640cf41bdadad,
         type: 3}
@@ -25,7 +55,32 @@ PrefabInstance:
     - target: {fileID: 2155321492503058542, guid: ae8d2c9898d110045bc640cf41bdadad,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.226
+      value: -21.990643
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155321492503058542, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155321492503058542, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155321492503058542, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155321492503058542, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.487
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155321492503058542, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.51
       objectReference: {fileID: 0}
     - target: {fileID: 2155321492503058546, guid: ae8d2c9898d110045bc640cf41bdadad,
         type: 3}
@@ -101,6 +156,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StickyGlowStick
+      objectReference: {fileID: 0}
+    - target: {fileID: 6809156511188464203, guid: ae8d2c9898d110045bc640cf41bdadad,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8d2c9898d110045bc640cf41bdadad, type: 3}

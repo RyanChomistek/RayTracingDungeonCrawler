@@ -29,6 +29,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private QuiverController m_QuiverController = null;
 
+    [SerializeField]
+    private Collider m_BodyCollider = null;
+
+
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -66,7 +70,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnFire1(InputValue value)
     {
-        m_CrossBowController.Fire();
+        m_CrossBowController.Fire(gameObject, m_BodyCollider);
     }
 
     private void OnInteract(InputValue value)
@@ -93,16 +97,21 @@ public class PlayerController : MonoBehaviour
     private void UpdateRotation(Transform t, Vector3 delta)
     {
         Vector3 currentRotation = t.rotation.eulerAngles;
+
+        // convert the x rotation so that its always between -90 and 90
+        currentRotation.x = Mathf.Rad2Deg * Mathf.Asin(Mathf.Sin(currentRotation.x * Mathf.Deg2Rad));
+
         Vector3 currentRotationClone = currentRotation;
-        
-        currentRotation.y += delta.x * m_RotateSensitivity;
+
         currentRotation.x -= delta.y * m_RotateSensitivity;
+        currentRotation.y += delta.x * m_RotateSensitivity;
+
         //currentRotation.y = Mathf.Repeat(currentRotation.y, 360);
         //currentRotation.x %= m_MaxYAngle;
-        //currentRotation.x = Mathf.Clamp(currentRotation.x, -m_MaxYAngle, m_MaxYAngle);
+        currentRotation.x = Mathf.Clamp(currentRotation.x, -m_MaxYAngle, m_MaxYAngle);
 
-        //if (delta.magnitude > 0)
-            //Debug.Log($"{currentRotationClone} {delta} {currentRotation}");
+        if (delta.magnitude > 0)
+            Debug.Log($"{currentRotationClone} {delta} {currentRotation}");
 
         t.rotation = Quaternion.Euler(currentRotation.x, currentRotation.y, 0);
     }
