@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "ca.andydbc.unity-texture-packer": "https://github.com/andydbc/unity-texture-packer.git",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
     "com.unity.ads": "3.4.4",
@@ -50,5 +51,11 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
+  },
+  "lock": {
+    "ca.andydbc.unity-texture-packer": {
+      "revision": "HEAD",
+      "hash": "0be36bcfdd847e5e7a5522ae5843d2b908006d06"
+    }
   }
 }

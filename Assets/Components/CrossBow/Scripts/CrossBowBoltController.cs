@@ -15,6 +15,8 @@ public class CrossBowBoltController : MonoBehaviour, Interactable
     private GameObject m_FiredByRootObject = null;
     private Collider m_FiredByCollider = null;
 
+    private float m_DamageAmount = 1;
+
     public void Awake()
     {
         m_RB = GetComponent<Rigidbody>();
@@ -56,7 +58,12 @@ public class CrossBowBoltController : MonoBehaviour, Interactable
             Physics.IgnoreCollision(m_FiredByCollider, GetComponent<Collider>());
             return;
         }
-            
+
+        IDamageable damageableItem = collision.gameObject.GetComponent<IDamageable>();
+        if (damageableItem != null)
+        {
+            damageableItem.Damage(m_DamageAmount);
+        }
 
         m_RB.velocity = Vector3.zero;
         if(m_IsSticky)
