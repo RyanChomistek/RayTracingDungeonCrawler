@@ -110,9 +110,6 @@ public class PlayerController : MonoBehaviour
         //currentRotation.x %= m_MaxYAngle;
         currentRotation.x = Mathf.Clamp(currentRotation.x, -m_MaxYAngle, m_MaxYAngle);
 
-        if (delta.magnitude > 0)
-            Debug.Log($"{currentRotationClone} {delta} {currentRotation}");
-
         t.rotation = Quaternion.Euler(currentRotation.x, currentRotation.y, 0);
     }
 

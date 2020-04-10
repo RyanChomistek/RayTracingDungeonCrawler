@@ -45,7 +45,7 @@ public class CrossBowController : MonoBehaviour
         m_LoadedBolt.OnReady();
     }
 
-    public void Fire(GameObject firedByRootObject, Collider firedByCollider)
+    public virtual void Fire(GameObject firedByRootObject, Collider firedByCollider)
     {
         if (m_LoadedBolt == null)
         {
@@ -53,7 +53,7 @@ public class CrossBowController : MonoBehaviour
         }
 
         m_LoadedBolt.transform.parent = null;
-        m_LoadedBolt.OnFire(firedByRootObject, firedByCollider);
+        m_LoadedBolt.OnFire(firedByRootObject, firedByCollider, transform.forward);
         m_LoadedBolt.GetComponent<Rigidbody>().AddForce(transform.forward * m_FiringForce);
         m_LoadedBolt = null;
 

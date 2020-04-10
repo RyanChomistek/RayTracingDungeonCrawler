@@ -6,27 +6,43 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class CrossBowBoltController : MonoBehaviour, Interactable
 {
-    private Rigidbody m_RB;
-    private Collider m_Collider;
+    protected Rigidbody m_RB = null;
+    protected Collider m_Collider = null;
 
     [SerializeField]
-    private bool m_IsSticky;
+    private bool m_IsSticky = false;
 
-    private GameObject m_FiredByRootObject = null;
-    private Collider m_FiredByCollider = null;
+    protected GameObject m_FiredByRootObject = null;
+    protected Collider m_FiredByCollider = null;
 
     private float m_DamageAmount = 1;
+
+    [SerializeField]
+    protected bool m_HasBeenFired = true;
+    public bool HasBeenFired { get { return m_HasBeenFired; } }
+
+    [SerializeField]
+    protected bool m_HasStopped = true;
+
+    protected bool InFlight { get { return m_HasBeenFired && !m_HasStopped; } }
 
     public void Awake()
     {
         m_RB = GetComponent<Rigidbody>();
         m_Collider = GetComponent<Collider>();
+        m_HasBeenFired = true;
+    }
+
+    public void FixedUpdate()
+    {
+        m_HasStopped = m_RB.velocity.magnitude == 0;
     }
 
     public virtual void OnPickUp()
     {
         m_RB.isKinematic = true;
         m_RB.detectCollisions = false;
+        m_HasBeenFired = false;
     }
 
     /// <summary>
@@ -41,16 +57,17 @@ public class CrossBowBoltController : MonoBehaviour, Interactable
     /// <summary>
     /// called when the bolt fires
     /// </summary>
-    public virtual void OnFire(GameObject firedByRootObject, Collider firedByCollider)
+    public virtual void OnFire(GameObject firedByRootObject, Collider firedByCollider, Vector3 FiredDirection)
     {
         m_FiredByRootObject = firedByRootObject;
         m_FiredByCollider = firedByCollider;
         m_RB.isKinematic = false;
         m_Collider.enabled = true;
         m_RB.detectCollisions = true;
+        m_HasBeenFired = true;
     }
 
-    void OnCollisionEnter(Collision collision)
+    protected void OnCollisionEnter(Collision collision)
     {
         // Return early if the object we're hitting is the one who fired us
         if (collision.rigidbody != null && collision.rigidbody.gameObject == m_FiredByRootObject)
